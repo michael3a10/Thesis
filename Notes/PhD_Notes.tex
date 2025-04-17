@@ -1,0 +1,120 @@
+% Main LaTeX file for collecting structured research article notes
+\documentclass[a4paper,12pt,twoside,openright]{memoir}
+
+% Packages
+\usepackage{color, calc, graphicx, soul, bookman, float}
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{setspace}
+\usepackage{bookman}
+\usepackage{amsmath, amssymb, amsthm, amstext, bm}
+\usepackage[left=1.8cm, top=2cm, bottom=2cm, right=1.8cm, bindingoffset=0.2cm]{geometry}
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{parskip}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{indentfirst}
+\usepackage{mhchem}
+\usepackage{textgreek}
+\usepackage{tcolorbox}
+\usepackage{tabularray}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{lscape, rotating}
+\usepackage[english]{babel}
+\usepackage{tikz}
+
+% Bibliography with IEEE style
+%\usepackage[backend=biber,style=ieee]{biblatex}
+%\addbibresource{references.bib}
+
+% Daleif1 chapter style modifications
+\definecolor{USMBOX}{rgb}{.141,.0,.702}
+\definecolor{USMNUM}{rgb}{1.0,.349,.0}
+\definecolor{USMTEXT}{rgb}{.698,.133,.133}
+
+\makeatletter
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{%
+  \sbox\feline@chapter{%
+    \resizebox{!}{#1}{\fboxsep=1pt%
+      \colorbox{USMBOX}{\color{USMNUM}\bfseries\sffamily\thechapter}%
+    }%
+  }%
+  \rotatebox{90}{%
+    \resizebox{\heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}{!}{\scshape\so\@chapapp}}\quad%
+    \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+}
+\newcommand\feline@chm[1][4cm]{%
+  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
+  \makebox[0pt][l]{%
+    \makebox[1cm][r]{\usebox\feline@chapter}%
+  }%
+}
+\makechapterstyle{daleif1}{%
+  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}%
+  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{USMTEXT}}%
+  \renewcommand\chapternamenum{}%
+  \renewcommand\printchaptername{}%
+  \setlength\beforechapskip{-50pt}%
+  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}%
+  \renewcommand*\printchapternonum{\phantom{\feline@chm[2.5cm]}\par}%
+  \renewcommand\afterchapternum{\par\vskip\midchapskip}%
+  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}%
+}
+\renewcommand*{\@chapapp}{Paper}
+\makeatother
+\chapterstyle{daleif1}
+
+
+% Simple TOC changes that work with memoir
+\definecolor{ChapNumColor}{rgb}{0.0,0.0,0.7}
+
+% Format chapter number with color and bold
+\renewcommand{\cftchapterfont}{\normalfont\bfseries}
+\renewcommand{\cftchapterpagefont}{\normalfont\bfseries}
+
+% Add Chapter prefix to chapter numbers
+\renewcommand{\cftchapterpresnum}{\textcolor{ChapNumColor}{\textbf{Paper }}}
+\renewcommand{\cftchapteraftersnum}{}
+
+% Set widths for proper alignment
+\setlength{\cftchapternumwidth}{5em}
+\setlength{\cftchapterindent}{1.5em}
+
+% Remove dots and leaders
+\renewcommand{\cftchapterleader}{\hfill}
+\renewcommand{\cftchapterdotsep}{\cftnodots}
+
+% Force page numbers to align at top
+% The key is to remove the traditional dot leaders
+% and use rightskip to position the page number consistently
+%\makeatletter
+%\renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+%\makeatother
+
+\begin{document}
+\frontmatter
+
+\includepdf[pages={1}]{PhD_Notes_Cover}
+
+\tableofcontents*
+\mainmatter
+
+
+% Include paper chapters (examples)
+\include{Abdelgawad_2019/Abdelgawad_et_al_2019}  % Folder with a tex file for Jane Doe et al 2023
+%\include{notes/Smith2024/main} % Another paper
+
+%\printbibliography
+
+\end{document}

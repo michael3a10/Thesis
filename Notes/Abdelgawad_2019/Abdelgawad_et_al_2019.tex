@@ -1,0 +1,46 @@
+\chapter{Optimization of device geometry in single-plate DMF}
+\section{Abstract Summary}
+\begin{enumerate}
+    \item Combination of numerical simulations and experimental tests to compare six different single-plate (open-type) designs.
+    \item \textbf{\emph{COMSOL}}, via finite element analysis, is used to:
+        \begin{enumerate}
+            \item \textbf{\emph{Calculate electrodynamic actuation forces in each designs}}
+        \end{enumerate}
+    \item \textbf{Forces predicted by the electrodynamic model} were \textbf{\emph{in agreement}} with \textbf{forces predicted using electromechanical models}
+\end{enumerate}
+
+\section{Problems to be solved}
+\begin{enumerate}
+    \item There is no predefined geometry for positioning ground electrodes relative to actuation electrodes in single plate devices.
+    \item Changing the position of the grounding electrodes/wires on the device will change the intensity and distribution of the electric field in the vicinity of the droplet should:
+    \begin{enumerate}
+        \item Change the actuation force on the droplet
+        \item Maximum droplet speed that can be achieved
+    \end{enumerate}
+    \item However, until now, there have been no studies on the optimum design of such devices possibly due to:
+    \begin{enumerate}
+        \item Time and cost that would be required to experimentally evaluate the different geometries
+        \item Lack of accessible and verifiable numerical modeling tools that can compare the different designs
+        \item Use in-house written codes 
+        \item Available source codes that require the writing of long and complex scripts
+    \end{enumerate}
+\end{enumerate}
+
+\section{Proposed Method}
+\subsection{Preparation}
+\begin{enumerate}
+    \item To model in COMSOL, use \textbf{\emph{electrodynamic}} instead of electrowetting or electromechanical models
+    \begin{itemize}
+        \item Calculate actuation forces on droplets approximated as spherical caps with unchanging geometry (no wetting or contact angle change)
+    \end{itemize}
+    \item Electrodynamic and electrowetting/mechanical models are not mutually \newline exclusive, as contact angle change in electrowetting can be interpreted as an equilibrium between electrodynamic forces and surface tension.
+    \item Solve for the electric field around the droplet and calculated the charge \newline density accumulated on droplet surfaces for six single-plate designs \newline reported in the literature.
+    \item Use Maxwell-stress tensor formulation to calculate the droplet actuation forces in each design.
+    \item Validate the modeling results experimentally by estimating the forces acting on droplets in devices corresponding to three of the modeled designs using a unique measurement technique.
+    \item Modeling results were used to generate a list of
+    design tips for production of devices with maximum actuation forces.
+\end{enumerate}
+\subsection{Geometrical Parameters}
+\section{Results and Findings}
+\section{Discussion and Critique}
+\section{Applications to My work}
