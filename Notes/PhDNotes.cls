@@ -29,6 +29,7 @@
   result/.style = {ellipse, draw, fill=green!20, minimum height=3em, text centered, text width=10em},
   arrow/.style = {thick, -{Stealth[scale=1.2]}}
 }
+
 % -----------------------
 % DOCUMENT SETTINGS
 % -----------------------
@@ -54,7 +55,6 @@
 \definecolor{USMNUM}{rgb}{1.0,.349,.0}
 \definecolor{USMTEXT}{rgb}{.698,.133,.133}
 
-% Path to the logo image - update this path to where your logo is stored
 \newcommand{\logopath}{Logos/Logo_Combined_V3.png}
 
 \newlength\dlf@normtxtw
@@ -78,7 +78,6 @@
   \makebox[0pt][l]{\makebox[0.9cm][r]{\usebox\feline@chapter}}%
 }
 
-% Define a box for the logo
 \newsavebox{\logobox}
 \newcommand{\setuplogobox}{%
   \sbox{\logobox}{\includegraphics[height=1.6cm]{\logopath}}%
@@ -92,7 +91,6 @@
   \renewcommand\printchaptername{}%
   \setlength\beforechapskip{-50pt}%
 
-  % For numbered chapters (regular chapters)
   \renewcommand\printchapternum{%
     \hbox to \textwidth{%
       \hfil%
@@ -102,7 +100,6 @@
     }\par%
   }%
 
-  % For unnumbered chapters (like Contents, References, etc.)
   \renewcommand*\printchapternonum{%
     \hbox to \textwidth{%
       \hfil%
@@ -113,68 +110,81 @@
   }%
 
   \renewcommand\afterchapternum{\par\vskip\midchapskip}%
-  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}%
+  \renewcommand\printchaptertitle[1]{%
+    \chaptitlefont\raggedleft ##1\par
+    \ifdefined\@chapterauthors
+      \vspace{-0.5em}\raggedleft\textit{\@chapterauthors}\par
+    \fi
+    \ifdefined\@chapterdoi
+      \raggedleft DOI: \href{https://doi.org/\@chapterdoi}{\@chapterdoi}\par
+    \fi
+  }%
 }
 \chapterstyle{daleif1}
-\renewcommand{\chaptermark}[1]{%
-  \markboth{#1}{}%
+
+% Even and odd page header customization
+\makepagestyle{phdnotes}
+\makeevenhead{phdnotes}{}{}{{\leftmark}} % Title on even pages
+\makeoddhead{phdnotes}{}{}{\ifdefined\@chapterdoi DOI: \@chapterdoi \fi} % DOI on odd pages
+\pagestyle{phdnotes}
+
+% Author formatting in TOC (in TOC line)
+\newcommand{\addtoTOCwithauthors}[3]{% title, author string, page
+  \addtocontents{toc}{\protect\contentsline{chapter}{\protect\textbf{#1}\\\protect\small\textit{#2}}{#3}}
 }
 
-% Initialize the logo box
-\AtBeginDocument{\setuplogobox}
+% Generate author string: if >2 authors, show First author et al., year
+% Example usage can be integrated into user macros
 
 % -----------------------
 % TOC STYLE
 % -----------------------
-% Remove all dots from TOC
 \renewcommand{\cftdot}{}
-
-% Make sure TOC related commands are properly defined
 \makeatletter
-% Set up the TOC formatting directly using memoir's internal commands
 \setlength{\cftbeforechapterskip}{1em}
 \setlength{\cftchapterindent}{1.5em}
 \setlength{\cftchapternumwidth}{5em}
-
-% Format chapter entries in TOC
 \renewcommand{\cftchapterfont}{\normalfont\bfseries}
 \renewcommand{\cftchapterpagefont}{\normalfont\bfseries}
-
-
-% Simple TOC changes that work with memoir
 \definecolor{ChapNumColor}{rgb}{0.64,0.23,0.28}
 \makeatother
 
-\AtBeginDocument{%
-  % Apply at begin document to ensure all TOC styles are loaded
+\AtBeginDocument{% 
   \renewcommand{\chapternumberline}[1]{%
     \textcolor{ChapNumColor}{\textbf{Paper #1}}\hspace{1em}%
   }
-
-  % Remove dots in TOC by redefining leader commands
   \renewcommand{\cftchapterleader}{\hfill}
   \renewcommand{\cftsectionleader}{\hfill}
   \renewcommand{\cftsubsectionleader}{\hfill}
-
-  % Adjust indentation for sections and subsections
   \setlength{\cftsectionindent}{2.5em}
   \setlength{\cftsubsectionindent}{4.0em}
-
-  % Change "Contents" to "Literature" in the TOC
   \renewcommand*{\contentsname}{Review}
 }
+
 % -----------------------
 % BIBLIOGRAPHY SETUP
 % -----------------------
-\addbibresource{References.bib}
-
+\newcommand{\bibliopath}{References/}
+\addbibresource{\bibliopath Papers.bib}
 \newcommand{\addbibintoc}{\phantomsection\addcontentsline{toc}{chapter}{References}}
 \newcommand{\addackintoc}{\phantomsection\addcontentsline{toc}{chapter}{Acknowledgments}}
 
 % -----------------------
+% FIGURE AND RESOURCE SHORTCUTS
+% -----------------------
+\graphicspath{{Figures/}}
+\newcommand{\includefig}[4][h!]{%
+  \begin{figure}[#1]
+    \centering
+    \includegraphics[width=#2\textwidth]{#3}
+    \caption{#4}
+    \label{fig:#3}
+  \end{figure}%
+}
+
+% -----------------------
 % CHAPTER INFO (title + author/doi)
 % -----------------------
-\newcommand{\paperauthors}[1]{\vspace{-1em}\par\noindent\textit{#1}}
-\newcommand{\paperdoi}[1]{\par\noindent DOI: \href{https://doi.org/#1}{#1}}
+\newcommand{\setchapterauthors}[1]{\gdef\@chapterauthors{#1}}
+\newcommand{\setchapterdoi}[1]{\gdef\@chapterdoi{#1}}
 
-% Usage in chapters: \paperauthors{Author1, Author2} \paperdoi{10.1016/...}
