@@ -1,0 +1,33 @@
+%=========== main.tex (converted for phdnotes class) ===========
+\documentclass[a4paper,12pt]{PhDNotes} % Using custom class
+
+% Load phdnotes style (contains chapter design, TOC styling, etc.)
+\usepackage{Notation}
+
+% Bibliography with IEEE style
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{ReferenceTest/ReferencesTest.bib} % Your BibTeX file
+
+% Metadata
+\title{PhD Research Notes}
+\author{Farhan Aizuddin}
+\date{\today}
+
+\begin{document}
+
+% Roman numbered frontmatter
+\frontmatter
+\includepdf[pages={1}]{PhD_Notes_Cover}
+\tableofcontents*
+
+% Arabic numbered content
+\mainmatter
+
+% Include  chapters
+\include{Chapters/C1/Chapter1}
+% Bibliography
+\backmatter
+\addcontentsline{toc}{chapter}{References}
+\bibliography{ReferenceTest/Papers}
+
+\end{document}
