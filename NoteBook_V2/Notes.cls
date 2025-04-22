@@ -12,7 +12,7 @@
 \RequirePackage{setspace}
 \RequirePackage{bookman}
 \RequirePackage{amsmath,amssymb,amsthm,amstext,bm}
-\RequirePackage[left=2cm,top=2cm,bottom=2cm,right=2cm,bindingoffset=0.54cm]{geometry}
+\RequirePackage[left=2cm,top=2cm,bottom=2cm,right=2cm,bindingoffset=0.54cm,headheight=2cm,headsep=0.2cm]{geometry}
 \RequirePackage{bookmark}
 \RequirePackage{hyperref}
 \RequirePackage{url}
@@ -137,7 +137,7 @@
 \makeevenhead{logoheader}{%
 }{%
 }{%
-  \headerfont\raisebox{-0.1cm}{\usebox{\headerlogobox}}%
+  \headerfont\raisebox{-0.1cm}{\usebox{\headerlogobox}}
 }
 
 % Header for odd pages (right pages) - logo only ON RIGHT
