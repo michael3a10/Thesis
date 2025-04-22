@@ -1,0 +1,40 @@
+%=========== phdnotes-style.sty ===========
+\ProvidesPackage{phdnotes-style}[2025/04/17 v1.0 Custom style for phdnotes class]
+
+% Custom listings style
+\lstset{
+  basicstyle=\small\ttfamily,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  xleftmargin=\parindent,
+  captionpos=b
+}
+
+% Floating figures and tables
+\captionsetup[figure]{labelfont=bf, labelsep=space}
+\captionsetup[table]{labelfont=bf, labelsep=space}
+
+% Define a boxed environment for note emphasis
+\usepackage[most]{tcolorbox}
+\newtcolorbox{notebox}{colback=blue!5!white,colframe=blue!75!black,
+  title=Note, sharp corners, boxrule=0.5pt, arc=1mm}
+
+% Custom text wrapping for images
+\newlength\myheight
+\newlength\mydepth
+\settototalheight\myheight{Xygp}
+\settodepth\mydepth{Xygp}
+\setlength\fboxsep{0pt}
+\newcommand*\inlinegraphics[1]{%
+  \settototalheight\myheight{Xygp}%
+  \settodepth\mydepth{Xygp}%
+  \raisebox{-\mydepth}{\includegraphics[height=\myheight]{#1}}%
+}
+
+% IEEE-style biblatex tweaks if needed
+% Already handled via class if IEEE style is loaded
