@@ -7,7 +7,7 @@
 % -----------------------
 % PACKAGES
 % -----------------------
-\RequirePackage{color,graphicx,float,bookman,setspace}
+\RequirePackage{color,graphicx,float,bookman,setspace,textgreek}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{amsmath,amssymb,amsthm,bm}
 \RequirePackage[left=1.8cm, top=2cm, bottom=2cm, right=1.8cm, bindingoffset=0.2cm]{geometry}
@@ -16,13 +16,14 @@
 \RequirePackage[english]{babel}
 \RequirePackage{tikz}
 \usepackage{pgfplots}
+\RequirePackage{forest}
 \pgfplotsset{compat=1.18}
 \RequirePackage[style=ieee,backend=biber]{biblatex}
 
 %% ---------------------------
 % TIKZ LIBRARIES & SETTINGS
 % ----------------------------
-\usetikzlibrary{positioning, shapes.geometric, arrows.meta, shapes}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta, shapes, trees}
 \tikzset{
   block/.style = {rectangle, draw, fill=blue!10, text width=6em, text centered, rounded corners, minimum height=3em},
   section/.style = {rectangle, draw, thick, fill=orange!20, text centered, rounded corners, minimum height=3em, minimum width=10em},
