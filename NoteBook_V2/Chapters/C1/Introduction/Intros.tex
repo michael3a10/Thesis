@@ -12,8 +12,52 @@ To overcome these obstacles, a fundamental shift toward innovative detection app
 
 Developing a versatile and compact Digital Microfluidics Platform (DMF) with integrated electrochemical (EC) sensors could help identify specific Salmonella bacterial species responsible for outbreaks.\\
 
-This initiative seeks to enhance public health strategies and enable prompt Salmonella identification, thereby reducing the global impact of foodborne outbreaks.
+This initiative seeks to enhance public health strategies and enable prompt Salmonella identification, thereby reducing the global impact of foodborne outbreaks.\\
 
-\section{Problem Statement}
-\section{Research Objectives}
-\section{Notes Layout}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        mindmap,
+        concept color=red!30,
+        level 1 concept/.append style={font=\large\bfseries, level distance=4.5cm, sibling angle=90},
+        level 2 concept/.append style={font=\normalsize, level distance=4cm, sibling angle=40},
+        every node/.style={concept, execute at begin node=\hskip0pt, text width=2.8cm, align=center, font=\small},
+        grow cyclic,
+        nodes={concept},
+    ]
+        
+        \node[font=\large\bfseries, text width=3cm] {Salmonella Detection}
+        [clockwise from=45]
+        child[concept color=orange!50] { node[font=\bfseries] {Traditional Methods}
+            [clockwise from=110]
+            child { node {Culture-based approaches} }
+            child { node {PCR methods} }
+            child { node {Specialized equipment needed} }
+            child { node {Slow processing time} }
+        }
+        child[concept color=blue!50] { node[font=\bfseries] {Challenges}
+            [clockwise from=20]
+            child { node {Limited sensitivity} }
+            child { node {Resource intensive} }
+            child { node {Requires trained technicians} }
+            child { node {Delayed response time} }
+        }
+        child[concept color=green!50] { node[font=\bfseries] {Needs}
+            [clockwise from=290]
+            child { node {Quick detection} }
+            child { node {Cost-effective solutions} }
+            child { node {Field-deployable technologies} }
+            child { node {Global implementation} }
+        }
+        child[concept color=purple!50] { node[font=\bfseries] {Proposed Solution}
+            [clockwise from=200]
+            child { node {Digital Microfluidics Platform} }
+            child { node {Electrochemical sensors} }
+            child { node {In-situ real-time verification} }
+            child { node {Enhanced sensitivity \& specificity} }
+        };
+    \end{tikzpicture}
+    \caption{Mind map illustrating the challenges of traditional Salmonella detection methods and the proposed Digital Microfluidics Platform solution with integrated electrochemical sensors.}
+    \label{fig:salmonella-detection}
+\end{figure}

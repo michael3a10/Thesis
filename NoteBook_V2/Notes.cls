@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{Notes}[2025/04/22 Custom class for PhD research notes]
 
-\LoadClass[a4paper,11pt,twoside,openright]{memoir}
+\LoadClass[a4paper,12pt,twoside,openright]{memoir}
 
 % ------------------------------------------------
 % Packages
@@ -36,8 +36,8 @@
 \RequirePackage[english]{babel}
 \RequirePackage{smartdiagram}
 \RequirePackage{tikz}
-\RequirePackage[natbibapa]{apacite}
-\RequirePackage{apalike}
+\RequirePackage[noadjust,compress]{cite}
+\RequirePackage{ieeetrantools}
 
 % ------------------------------------------------
 % General Settings
@@ -225,8 +225,16 @@
 % ------------------------------------------------
 \newcommand\pros[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\cons[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand\important[1]{\textcolor{black}{\textbf{#1}}}
+\newcommand\methods[1]{\textcolor{green}{\textbf{#1}}}
+\newcommand\findings[1]{\textcolor{orange}{\textbf{#1}}}
 
 % ------------------------------------------------
 % Default Graphic Path (Change in Main File)
 % ------------------------------------------------
 \graphicspath{{Figures/}}
+
+% ------------------------------------------------
+% Tikz libraries
+% ------------------------------------------------
+\usetikzlibrary{shapes,arrows,positioning,shadows,trees,mindmap,backgrounds}
