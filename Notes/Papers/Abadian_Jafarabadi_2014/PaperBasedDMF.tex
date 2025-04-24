@@ -1,56 +1,46 @@
 \chapter{Paper-Based Digital Microfluidics}
-% Define custom colors
-\definecolor{topnodecolor}{RGB}{180, 255, 180} % Light green
-\definecolor{midnodecolor}{RGB}{255, 210, 210} % Light pink
+\section{Summary}
+This paper elucidates a novel methodology for the fabrication of digital microfluidic (DMF) devices predicated on the utilisation of paper as a substrate, thereby addressing the inherent limitations of conventional DMF systems, notably their cost and the complexities associated with clean-room-based fabrication processes.\\
+
+The authors posit that the proposed paper-based DMF paradigm offers a facile, rapid, and cost-effective alternative, enabling the creation of disposable devices suitable for individual experiments, thus mitigating issues such as adsorption and dielectric breakdown.
+
+\section{Key Points of the Paper}
+
+\subsection{Novel Fabrication Method} 
+The paper introduces a new approach to fabricating digital microfluidic (DMF) devices using paper as the primary substrate, along with graphite for electrodes, adhesive tape as a dielectric layer, and commercially available water repellants as hydrophobic coatings. This method aims to overcome the limitations of traditional DMF fabrication, which often involves expensive materials and complex, time-consuming clean-room processes.
+
+\subsection{Low-Cost and Accessible Materials} 
+A key feature of this work is the exclusive use of low-cost, readily available materials. Paper serves as an inexpensive and flexible substrate. Graphite spray provides a simple means of creating conductive electrodes. Adhesive tape functions as the dielectric layer. Two different commercial water repellants (Nevosil Si-7100 and Avam rain repellant) are explored as cost-effective alternatives to materials like Teflon-AF.
+
+\subsection{Simplified Fabrication Process}
+The proposed fabrication procedure is significantly simpler, faster, and lower in cost compared to conventional methods. It involves template creation using a laser cutter, direct patterning of graphite electrodes by spraying over the template, application of adhesive tape as the dielectric, and finally, treatment with a hydrophobic substance. This out-of-clean-room approach enhances the accessibility of DMF technology.
+
+\subsection{Functional Device Demonstration} 
+The authors successfully demonstrate the basic functionalities of the fabricated paper-based DMF device, including droplet movement and merging, with droplet volumes ranging from 15 to 50 \textmugreek L. The merging of \(\ce{NaOH}\) and phenolphthalein droplets, resulting in a colour change, visually confirms the on-chip reaction capability.
+
+\subsection{Low-Cost High-Voltage Actuation} 
+To actuate the droplets via electrowetting on dielectric (EWOD), a custom-designed, low-cost, and portable high-voltage supply circuit is presented. This circuit, costing less than \$10 and powered by a 6V battery, utilises a switching flyback transformer from a CRT display and a 555 timer IC to generate the necessary voltage (approximately 700 $V_{AC}$) for droplet manipulation.
+
+\subsection{Advantages of Paper as a Substrate} The use of paper offers several advantages, including its low cost, availability in various forms, flexibility, biocompatibility, and disposability. Furthermore, paper's compatibility with lamination and common printing methods opens avenues for simple, fast, and potentially massive patterning of conductive electrodes. The potential for merging paper-based DMF with conventional paper-based microfluidics to create hybrid devices is also highlighted.
+
+\subsection{Addressing Limitations of PCB-based DMF}
+The paper explicitly addresses drawbacks associated with using printed circuit boards (PCBs) as substrates in DMF devices, such as the presence of deep trenches between electrodes that can impede droplet movement. The proposed paper-based DMF avoids this issue as the graphite electrodes can penetrate the paper, resulting in a more planar surface.
+
+\subsection{Performance Comparison of Hydrophobic Layers} 
+Two different hydrophobic materials, Nevosil Si-7100 and Avam rain repellant, were evaluated. Nevosil Si-7100 exhibited better performance in terms of treatment, while Avam rain repellant, although more cost-effective and readily available, proved harder to treat uniformly on the adhesive tape.
+
+\subsection{Limitations and Future Research Directions} 
+The authors acknowledge certain limitations of the current paper-based DMF system, including temperature constraints (unsuitable for experiments above 200 °C), the physical limitations of paper, restrictions on high-grade dielectric materials, and limitations in electrode resolution and droplet volume. Future research is suggested to focus on reducing electrode size and inter-electrode gaps through finer patterning techniques (such as printing), decreasing the required actuation voltage by using thinner dielectric layers, and developing closed paper-based DMF configurations.
+
+\section{Conclusion}
+In conclusion, this paper presents a significant step towards democratising DMF technology by introducing a highly accessible and cost-effective fabrication method using commonplace materials. \\
+
+The successful demonstration of fundamental droplet manipulation on the proposed paper-based platform underscores its potential for various applications, particularly in resource-limited settings, while also highlighting areas for future development and refinement.\\
+
+Figure \ref{Abadian_2014} summarizes the contents of this paper.
 \begin{figure}[h!]
     \centering
-    \begin{forest}
-        for tree={
-            draw,
-            rounded corners,
-            font=\sffamily\scriptsize,
-            text centered,
-            text width=2.2cm,
-            minimum height=0.7cm,
-            s sep=0.3cm,
-            l sep=0.5cm,
-            child anchor=north,
-            parent anchor=south,
-            edge={->},
-            edge path={
-                \noexpand\path[\forestoption{edge}] 
-                (!u.parent anchor) -- +(0,-0.2cm) -| (.child anchor)\forestoption{edge label};
-            },
-            where level=0{font=\sffamily\small\bfseries, text width=3cm}{},
-            where level=1{font=\sffamily\footnotesize, fill=topnodecolor}{fill=midnodecolor},
-        },
-        [{Paper-based Digital\\Microfluidics}, fill=topnodecolor
-            [{Fabrication}, name=fab
-                [{Paper Substrate}]
-                [{Graphite Electrodes}]
-                [{Adhesive Dielectric}]
-            ]
-            [{Characteristics}, name=dev
-                [{Open Configuration}]
-                [{Droplet Operations}]
-                [{No Pumps/Valves}]
-            ]
-            [{Components}, name=comp
-                [{Paper Substrate}]
-                [{Graphite Electrodes}]
-                [{Dielectric Layer}]
-            ]
-            [{Applications}, name=app
-                [{Biochemical Tests}]
-                [{Point-of-Care}]
-                [{DNA Biosensors}]
-            ]
-            [{Advantages}, name=adv
-                [{Low Cost}]
-                [{Simple Fabrication}]
-                [{Fast Prototyping}]
-            ]
-        ]
-    \end{forest}
+    \includegraphics[width=\textwidth]{Abadian_Jafaradi_2014.png}
     \caption{Structure of Paper-based Digital Microfluidics technology.}
+    \label{Abadian_2014}
 \end{figure}

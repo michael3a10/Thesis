@@ -15,7 +15,8 @@
 \RequirePackage{caption,subcaption,tabularray,multirow,multicol,lscape,rotating}
 \RequirePackage[english]{babel}
 \RequirePackage{tikz}
-\usepackage{pgfplots}
+\RequirePackage{pgfplots}
+\RequirePackage{mhchem}
 \RequirePackage{forest}
 \pgfplotsset{compat=1.18}
 \RequirePackage[style=ieee,backend=biber]{biblatex}
@@ -44,10 +45,10 @@
 % -----------------------
 % SPACING ADJUSTMENTS
 % -----------------------
-\setbeforesecskip{-0.5ex}
-\setaftersecskip{0.25ex}
-\setbeforesubsecskip{-0.5ex}
-\setaftersubsecskip{0.25ex}
+\setbeforesecskip{1em}
+\setaftersecskip{1em}
+\setbeforesubsecskip{1em}
+\setaftersubsecskip{1em}
 
 % -----------------------
 % DALEIF1 STYLE WITH LOGO
