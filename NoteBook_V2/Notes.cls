@@ -16,8 +16,8 @@
 \RequirePackage{bookmark}
 \RequirePackage{hyperref}
 \RequirePackage{url}
-\RequirePackage[justification=raggedright,singlelinecheck=false]{caption}
-\RequirePackage{subcaption}
+\RequirePackage[justification=centering,singlelinecheck=false]{caption}
+\RequirePackage[justification=centering]{subcaption}
 \RequirePackage{listings}
 \RequirePackage{paralist}
 \RequirePackage{parskip}
