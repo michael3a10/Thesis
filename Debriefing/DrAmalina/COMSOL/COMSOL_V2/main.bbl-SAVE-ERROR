@@ -1,0 +1,324 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global/global}
+    \entry{bhattacharjeeDropletPositionControl2010}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8800b53d5aa5083cddb910d5c2b19935}{%
+           family={Bhattacharjee},
+           familyi={B\bibinitperiod},
+           given={Biddut},
+           giveni={B\bibinitperiod}}}%
+        {{hash=cf9988489350e38fdae92cd02972a100}{%
+           family={Najjaran},
+           familyi={N\bibinitperiod},
+           given={Homayoun},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science and Business Media LLC}%
+      }
+      \strng{namehash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{fullhash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{fullhashraw}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{bibnamehash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{authorbibnamehash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{authornamehash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{authorfullhash}{44107568f5ed5c80df50a5d7a0954722}
+      \strng{authorfullhashraw}{44107568f5ed5c80df50a5d7a0954722}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Research on so called digital microfluidic systems (DMS) capable of manipulating individual microdroplets on a cell-based structure has enormously increased in the past few years, mainly due to the demand of the technology-dependent biomedical applications. Significant research in this area has been related to the simulation and modeling of droplet motion, demonstration of different drop actuation techniques on laboratory-scale prototypes, and droplet routing and scheduling for more efficient assay procedures. This paper introduces the basics of the control analysis and design of a DMS, which is a relatively unexplored area in digital microfluidics. This paper starts with a discussion on a simplified dynamic model of droplet motion in a planar array of cells, and continues with more complicated dynamic models that are necessary to realize the structure of an appropriate closed-loop control system for the DMS. The control analysis and design includes both the transient and steady-state responses of the DMS under external driving forces. The proposed control analysis and design approach is implemented into SIMULINK{®} models to demonstrate the performance of the DMS through simulation using the system parameters previously reported in the literature.}
+      \field{annotation}{14 citations (Crossref/DOI) [2025-07-13]\\ 14 citations (Crossref/DOI) [2025-07-12]\\ 14 citations (Crossref/DOI) [2025-07-12]\\ Citations: 14 (Crossref) [2025-07-12]\\ Citations: 19 (SemanticScholar) [2025-07-12]}
+      \field{issn}{1387-2176, 1572-8781}
+      \field{journaltitle}{Biomedical Microdevices}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{number}{1}
+      \field{title}{Droplet Position Control in Digital Microfluidic Systems}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{12}
+      \field{year}{2010}
+      \field{urldateera}{ce}
+      \field{pages}{115\bibrangedash 124}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1007/s10544-009-9366-9
+      \endverb
+      \verb{file}
+      \verb C:\Users\Farhan Aizuddin\Zotero\storage\DU65QKQH\Bhattacharjee and Najjaran - 2010 - Droplet position control in digital microfluidic systems.pdf
+      \endverb
+    \endentry
+    \entry{banerjeeDeterministicSplittingFluid2012}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=609459acb23af0a3699fa12c20c39ca1}{%
+           family={Banerjee},
+           familyi={B\bibinitperiod},
+           given={Ananda},
+           giveni={A\bibinitperiod}}}%
+        {{hash=02a2d5753c8084c1308fba2bc387e563}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yuguang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ac181c1064f4961aec905a262792649f}{%
+           family={Heikenfeld},
+           familyi={H\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5966ae6d53402d2860dea03e36381617}{%
+           family={Papautsky},
+           familyi={P\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Society of Chemistry (RSC)}%
+      }
+      \strng{namehash}{0d510dd4318d2bf2bd7fe8fe82911fed}
+      \strng{fullhash}{a2294fd2be74185c77f87a4162997f65}
+      \strng{fullhashraw}{a2294fd2be74185c77f87a4162997f65}
+      \strng{bibnamehash}{a2294fd2be74185c77f87a4162997f65}
+      \strng{authorbibnamehash}{a2294fd2be74185c77f87a4162997f65}
+      \strng{authornamehash}{0d510dd4318d2bf2bd7fe8fe82911fed}
+      \strng{authorfullhash}{a2294fd2be74185c77f87a4162997f65}
+      \strng{authorfullhashraw}{a2294fd2be74185c77f87a4162997f65}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{23 citations (Crossref/DOI) [2025-07-13]\\ 23 citations (Crossref/DOI) [2025-07-12]\\ 23 citations (Crossref/DOI) [2025-07-12]\\ Citations: 23 (Crossref) [2025-07-12]\\ Citations: 26 (SemanticScholar) [2025-07-12]}
+      \field{issn}{1473-0197, 1473-0189}
+      \field{journaltitle}{Lab on a Chip}
+      \field{langid}{english}
+      \field{number}{24}
+      \field{title}{Deterministic Splitting of Fluid Volumes in Electrowetting Microfluidics}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{12}
+      \field{year}{2012}
+      \field{urldateera}{ce}
+      \field{pages}{5138}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1039/c2lc40723j
+      \endverb
+      \verb{file}
+      \verb C:\Users\Farhan Aizuddin\Zotero\storage\JYPCQZ5S\Banerjee et al. - 2012 - Deterministic splitting of fluid volumes in electrowetting microfluidics.pdf
+      \endverb
+    \endentry
+    \entry{jainDesignFabricationCharacterization2017}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=f6eba98df7b2a417385338bf39b1fda5}{%
+           family={Jain},
+           familyi={J\bibinitperiod},
+           given={Vandana},
+           giveni={V\bibinitperiod}}}%
+        {{hash=ace8754dc1d6edd6afde3932cb19da8b}{%
+           family={Raj},
+           familyi={R\bibinitperiod},
+           given={T.\bibnamedelimi Pravin},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ba000a89fa043bb7f9aefd2fd2805ca3}{%
+           family={Deshmukh},
+           familyi={D\bibinitperiod},
+           given={Raghvendra},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c53a6d4ec2459af9caaa438192f0fc15}{%
+           family={Patrikar},
+           familyi={P\bibinitperiod},
+           given={Rajendra},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science and Business Media LLC}%
+      }
+      \strng{namehash}{29fb969aeb48e96abac0016fe6920632}
+      \strng{fullhash}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \strng{fullhashraw}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \strng{bibnamehash}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \strng{authorbibnamehash}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \strng{authornamehash}{29fb969aeb48e96abac0016fe6920632}
+      \strng{authorfullhash}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \strng{authorfullhashraw}{8ea7a4e6567bccb8fcb139dbdea4ff23}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Digital microfluidics (DMF) is an emerging liquid-handling technology that enables individual control over droplets on array of electrodes. In this paper a low cost approach for development and characterization of open configured electro wetting on dielectric (EWOD) based digital microfluidic device is presented. The array of electrodes pattern with 155 {$\mu$}m gap is realized on copper plated printed circuit board (PCB). Biocompatible polydimethylsiloxane (PDMS) is used as dielectric as well as hydrophobic layer which is a competitive substitute of expensive materials like Teflon-AF and parylene-C. The device is tested by the in-house developed low cost droplet handling and characterization system. A contact angle is measured by curve fitting; the volume of a droplet is calculated using a novel approach based on mathematical modeling of droplet as a spherical cap. The droplet transporting and merging are successfully performed on a fabricated device and velocities for forward and reverse direction on square and interdigitated pattern are analyzed. The device is also successfully demonstrated for the mixing applications using direct statistical method.}
+      \field{annotation}{40 citations (Crossref/DOI) [2025-07-13]\\ 40 citations (Crossref/DOI) [2025-07-12]}
+      \field{issn}{0946-7076, 1432-1858}
+      \field{journaltitle}{Microsystem Technologies}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Design, Fabrication and Characterization of Low Cost Printed Circuit Board Based {{EWOD}} Device for Digital Microfluidics Applications}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{23}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{389\bibrangedash 397}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1007/s00542-015-2680-7
+      \endverb
+      \verb{file}
+      \verb C:\Users\Farhan Aizuddin\Zotero\storage\GBQ3RB3A\Jain et al. - 2017 - Design, fabrication and characterization of low cost printed circuit board based EWOD device for dig.pdf
+      \endverb
+      \keyw{ccfInfo: Not Found,citationNumber: 43}
+    \endentry
+    \entry{kothamachuRoleDigitalMicrofluidics2020}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=1330481090811d4c88fe5d75a425e194}{%
+           family={Kothamachu},
+           familyi={K\bibinitperiod},
+           given={Varun\bibnamedelima B.},
+           giveni={V\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=ef6cca0507771e55050cdc20326613a6}{%
+           family={Zaini},
+           familyi={Z\bibinitperiod},
+           given={Sabrina},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3231b5ccc1fc4123ae97294c7ec65774}{%
+           family={Muffatto},
+           familyi={M\bibinitperiod},
+           given={Federico},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{938f2267515895c2d05cd8367d8cdcc0}
+      \strng{fullhash}{b3dd10440af9eb2393537c72329a3890}
+      \strng{fullhashraw}{b3dd10440af9eb2393537c72329a3890}
+      \strng{bibnamehash}{b3dd10440af9eb2393537c72329a3890}
+      \strng{authorbibnamehash}{b3dd10440af9eb2393537c72329a3890}
+      \strng{authornamehash}{938f2267515895c2d05cd8367d8cdcc0}
+      \strng{authorfullhash}{b3dd10440af9eb2393537c72329a3890}
+      \strng{authorfullhashraw}{b3dd10440af9eb2393537c72329a3890}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Digital microfluidics (DMF) is a liquid handling technique that has been demonstrated to automate biological experimentation in a low-cost, rapid, and programmable manner. This review discusses the role of DMF as a ``digital bioconverter''---a tool to connect the digital aspects of the design--build--learn cycle with the physical execution of experiments. Several applications are reviewed to demonstrate the utility of DMF as a digital bioconverter, namely, genetic engineering, sample preparation for sequencing and mass spectrometry, and enzyme-, immuno-, and cell-based screening assays. These applications show that DMF has great potential in the role of a centralized execution platform in a fully integrated pipeline for the production of novel organisms and biomolecules. In this paper, we discuss how the function of a DMF device within such a pipeline is highly dependent on integration with different sensing techniques and methodologies from machine learning and big data. In addition to that, we examine how the capacity of DMF can in some cases be limited by known technical and operational challenges and how consolidated efforts in overcoming these challenges will be key to the development of DMF as a major enabling technology in the computer-aided biology framework.}
+      \field{annotation}{20 citations (Crossref/DOI) [2025-07-13]\\ 20 citations (Crossref/DOI) [2025-07-12]}
+      \field{issn}{2472-6303}
+      \field{journaltitle}{SLAS Technology}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{number}{5}
+      \field{title}{Role of Digital Microfluidics in Enabling Access to Laboratory Automation and Making Biology Programmable}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{25}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \field{pages}{411\bibrangedash 426}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1177/2472630320931794
+      \endverb
+      \verb{file}
+      \verb C:\Users\Farhan Aizuddin\Zotero\storage\4MCXT5ZJ\Kothamachu et al. - 2020 - Role of digital microfluidics in enabling access to laboratory automation and making biology program.pdf
+      \endverb
+      \keyw{ccfInfo: Not Found,citationNumber: 18}
+    \endentry
+    \entry{basuDevelopmentGrapheneOxide2021}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=f69a16f67a54b8277b10058fb7ed1f30}{%
+           family={Basu},
+           familyi={B\bibinitperiod},
+           given={Mainak},
+           giveni={M\bibinitperiod}}}%
+        {{hash=65233b55a1aa91f745c36719f5397493}{%
+           family={Parihar},
+           familyi={P\bibinitperiod},
+           given={Vartika},
+           giveni={V\bibinitperiod}}}%
+        {{hash=863d22e6679e7284527e8fefc07f9f17}{%
+           family={Lincon},
+           familyi={L\bibinitperiod},
+           given={Abhijit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6e3b6ef69b4eeed41ff9440ecff62a7d}{%
+           family={Joshi},
+           familyi={J\bibinitperiod},
+           given={Vedant\bibnamedelima P.},
+           giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=285ed9d657586373e024ada621a144ee}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Soumen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=406c0f0a4981325f880318fd5478c5c5}{%
+           family={DasGupta},
+           familyi={D\bibinitperiod},
+           given={Sunando},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier BV}%
+      }
+      \strng{namehash}{6629aefd11f7069d035c96960ff1e0c8}
+      \strng{fullhash}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \strng{fullhashraw}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \strng{bibnamehash}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \strng{authorbibnamehash}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \strng{authornamehash}{6629aefd11f7069d035c96960ff1e0c8}
+      \strng{authorfullhash}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \strng{authorfullhashraw}{5792af63f383b3deaa40b4ee9ba43fbd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Dielectric breakdown puts an operating limit to the applied electric field in electrowetting-based applications. Herein, we report that the electrical properties relevant to electrowetting for a widely used dielectric, PDMS, can be substantially enhanced upon the incorporation of graphene oxide (GO) fillers into the PDMS polymer matrix. The GO-PDMS composite is characterized by higher values of the dielectric constant, higher breakdown electric field, and lower actuation voltages due to enhanced interfacial polarization. The improvement of these properties with the increase in concentration of GO, is explored till the `percolation threshold'. This newly developed composite as the dielectric, droplet actuation and electric field-induced droplet transportation over a fabricated triangular electrode system are performed. The results are compared with the literature data on PDMS and other dielectrics to establish the superior qualities of the dielectric for rapid transportation of droplets at significantly lower voltages with potential for new applications.}
+      \field{annotation}{12 citations (Crossref/DOI) [2025-07-13]\\ 12 citations (Crossref/DOI) [2025-07-12]\\ 12 citations (Crossref/DOI) [2025-07-12]\\ Citations: 12 (Crossref) [2025-07-12]\\ Citations: 8 (SemanticScholar) [2025-07-12]}
+      \field{issn}{0009-2509}
+      \field{journaltitle}{Chemical Engineering Science}
+      \field{langid}{english}
+      \field{month}{2}
+      \field{title}{Development of Graphene Oxide -- {{PDMS}} Composite Dielectric for Rapid Droplet Movement in Digital Microfluidic Applications}
+      \field{urlday}{12}
+      \field{urlmonth}{7}
+      \field{urlyear}{2025}
+      \field{volume}{230}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{116175}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.ces.2020.116175
+      \endverb
+      \verb{file}
+      \verb C:\Users\Farhan Aizuddin\Zotero\storage\X57I5TCG\Basu et al. - 2021 - Development of graphene oxide – PDMS composite dielectric for rapid droplet movement in digital micr.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

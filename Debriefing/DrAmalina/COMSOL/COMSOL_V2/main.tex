@@ -15,6 +15,14 @@
 \documentclass[9pt,a4paper,twocolumn,twoside]{tau-class/tau}
 \usepackage[english]{babel}
 \usepackage{mhchem}
+\usepackage{booktabs}
+\usepackage{tabularray}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+\sisetup{detect-all, per-mode=symbol, group-separator={,}}
+
 
 %% Spanish babel recomendation
 % \usepackage[spanish,es-nodecimaldot,es-noindentfirst]{babel}
@@ -62,7 +70,7 @@
 %----------------------------------------------------------
 
 \begin{abstract}
-    Welcome to tau ($\tau$) \LaTeX\ class designed especially for your lab reports or academic articles. In this example template, we will guide you through the process of using and customizing this document to your needs. For more information of this class check out the appendix section. There, you will find codes that define key aspects of the template, allowing you to explore and modify them.
+We numerically investigate electrowetting-on-dielectric (EWOD) deformation of a spherical-cap water droplet on a planar gold electrode coated with SU-8 2002 (\SI{35}{\micro\meter}) and Fluoropel PFC-1601V (\SI{5}{\micro\meter}). A 2D, two-phase incompressible laminar-flow model with a Level Set interface is solved in COMSOL 6.3. Electrowetting is represented via a wetted-wall boundary condition in which the apparent contact angle follows the Young–Lippmann relation based on the series capacitance of the dielectric stack; no explicit electrostatics subdomain is required. A time-dependent study applies a voltage ramp to $V_{\max}\in[0,400]\,$V and records $\theta(t)$, footprint width, and interface evolution. The simulations show a monotonic decrease of $\theta$ with $V$ and voltage-dependent spreading kinetics that are consistent with the model assumptions and material parameters. The workflow produces reproducible $\theta$–$V$ and $\theta$–$t$ datasets and figures suitable for reporting and comparison with future measurements.
 \end{abstract}
 
 %----------------------------------------------------------
@@ -93,7 +101,7 @@ This briefing note presents the theoretical background of droplet contact angle 
 
 \section{Theoretical Background}
 
-The contact angle of a droplet on a solid surface is defined as the angle formed between the tangent to the liquid surface at the contact line and the solid surface as shown in Figure \ref{contactangle}.
+The contact angle of a sessile droplet is defined as the angle between the tangent to the liquid–gas interface at the three-phase contact line and the solid surface as illustrated Figure \ref{contactangle}.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\columnwidth]{ContactAngle.png}
@@ -101,7 +109,7 @@ The contact angle of a droplet on a solid surface is defined as the angle formed
     \label{contactangle}
 \end{figure}
 
-The Young’s equation describes the balance of forces at the three-phase contact line, relating the contact angle ($\theta$) to the interfacial tensions as shown in Equation \ref{Young–Lippmann_V1} \cite{banerjeeDeterministicSplittingFluid2012,basuDevelopmentGrapheneOxide2021}.
+The Young-Lippmann equation describes the balance of capillary forces at the three-phase contact line with the electrostatic energy stored in the dielectric stack. For a single homogeneous dielectric layer, the contact angle ($\theta$) is related to the interfacial tensions is described in Equation \ref{Young–Lippmann_V1} \cite{banerjeeDeterministicSplittingFluid2012,basuDevelopmentGrapheneOxide2021}.
 \begin{equation}
 \label{Young–Lippmann_V1}
 \cos~(\theta_{V}) = \cos~(\theta_{0})~+~\frac{\epsilon_{r}\epsilon_{0}V^{2}}{2\gamma_{LG}d}
@@ -121,7 +129,7 @@ However, the equation assumes a single dielectric layer, which is often not the 
 
 Consider a common scenario with two distinct insulating layers:
 \begin{enumerate}
-    \item  A dielectric layer (e.g., SU-8, \(\ce{Si3N4}\)) with thickness $d_d$ and relative permittivity $\epsilon{r,d}$.
+    \item  A dielectric layer (e.g., SU-8, \(\ce{Si3N4}\)) with thickness $d_d$ and relative permittivity $\epsilon_{r,d}$.
     \item A hydrophobic layer (e.g., Teflon, PDMS) with thickness $d_h$ and relative permittivity $\epsilon_{r,h}$.
 \end{enumerate}
 
@@ -149,34 +157,189 @@ Finally, the effective capacitance can be used to calculate the contact angle va
 
 This specific form is directly supported by the literature, where researchers like Bhattacharjee and Najjaran present a similar equation for two layers (hydrophobic and dielectric) in series, influencing the contact angle change \cite{bhattacharjeeDropletPositionControl2010}. This equation demonstrates that the overall electrical performance of the dielectric stack, and consequently the EWOD actuation, is governed by the combined electrical impedance of both layers.
 
-\section{Proposed Simulation Methodology}
+\section{Simulation Setup}
 
-The simulation of droplet contact angle measurement against varying applied DC voltage was conducted using COMSOL Multiphysics, a powerful finite element analysis software. The simulation setup involved the following subsections.
+A 2D, two-phase incompressible laminar-flow model with a Level Set interface is solved in COMSOL Multiphysics 6.3 (\texttt{spf}+\texttt{tpf1}). The droplet is water (Fluid~1) and the ambient is ai(Fluid~2). Gravity is neglected at this scale, and no explicit electrostatics subdomain is included; electrowetting is represented through a wetted-wall boundary condition in which the apparent contact angle
+obeys the Young–Lippmann relation based on the \emph{series capacitance} of the dielectric stack. Time-dependent simulations apply a voltage ramp to several plateau values $V_{\max}$ and track the contact angle $\theta(t)$, the interface shape, and the footprint width.
 
-\subsection{Physics Modules and Study Selection}
-The simulation utilized the \textit{Electrostatics} and \textit{Moving Mesh} modules to model the electrostatic forces acting on the droplet and the movement of the contact line. The study type was set to \textit{Stationary} to analyze the droplet behavior under static conditions with varying applied voltages.
-\subsection{Geometry Creation}
-The geometry of the droplet and the substrate was created in COMSOL, ensuring accurate representation of the droplet shape and the surface features.
-\subsection{Material Properties}
-The material properties, including the dielectric constant and interfacial tension, were defined based on the materials used in the experiment.
-\subsection{Boundary Conditions}
-Appropriate boundary conditions were applied to simulate the contact angle and the influence of the applied voltage on the droplet behavior.
-\subsection{Mesh Generation}
-A fine mesh was generated to ensure accurate numerical results, particularly around the contact line where gradients are steep.
-\subsection{Simulation Execution}
-he simulation was executed, varying the applied DC voltage to observe changes in the contact angle.
-\subsection{Post-Processing}
-The results were post-processed to extract the contact angle values and visualize the droplet behavior under different voltage conditions.
+\subsection{Material and operating parameters}
+Table~\ref{tab:params} lists the quantities used. The effective areal capacitance of the SU-8/fluoropolymer stack is:
+\begin{equation}
+C_{\mathrm{eff}}
+=\Bigg(\frac{t_{\mathrm{SU8}}}{\varepsilon_0\varepsilon_{\mathrm{SU8}}}
+      +\frac{t_{\mathrm{fluoro}}}{\varepsilon_0\varepsilon_{\mathrm{fluoro}}}
+ \Bigg)^{-1}
+\approx \SI{6.59e-7}{F/m^2},
+\end{equation}
+for $t_{\mathrm{SU8}}=\SI{35}{\micro\meter}$,
+$t_{\mathrm{fluoro}}=\SI{5}{\micro\meter}$,
+$\varepsilon_{\mathrm{SU8}}\approx3.2$,
+and $\varepsilon_{\mathrm{fluoro}}\approx2.0$.
 
-\section{Simulation Challenges Encountered}
+\begin{table}[h!]
+\centering
+\caption{Model parameters used in COMSOL unless otherwise stated.}
+\label{tab:params}
+\begin{tblr}{
+  width = \linewidth,
+  colspec = {Q[260]Q[246]Q[417]},
+  column{3} = {c},
+  hline{1,11} = {-}{0.08em},
+  hline{2} = {-}{0.05em},
+}
+Quantity & Symbol / value & Note\\
+{Initial contact~\\angle} & $\theta_0=\SI{110}{\degree}$ & Initial contact angle\\
+{Dielectric\\thicknesses} & {\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$t_{\mathrm{SU8}}$ = $\SI{35}{\micro\meter}$\\\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$t_{\mathrm{fluo}}$ = $\SI{5}{\micro\meter}$ } & spin-coated\\
+{Relative~\\permittivities} & {\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$\varepsilon_{\mathrm{SU8}}\approx3.2$\\\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$\varepsilon_{\mathrm{fluoro}}\approx2.0$} & room temperature\\
+Surface tension & $\gamma_{LG}$~=~$\SI{0.072}{N/m}$ & water–air\\
+Electrode (Au) & $3\times\SI{3}{mm^2}$ & planar\\
+Voltage ramp & {\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$V(t)=V_{\max}$\\\labelitemi\hspace{\dimexpr\labelsep+0.5\tabcolsep}$V(t)$~=~$V_\mathrm{ramp}$} & DC plateau\\
+{Level-set~\\thickness} & $\varepsilon_{LS}\approx \SI{0.05}{mm}$ & $\sim$2–4 local $h$\\
+{Reinitialization~\\speed} & $\gamma_{LS}=\SI{1}{m/s}$ & default\\
+Time window & $t\in[0,T_{\mathrm{end}}]$ & transient
+\end{tblr}
+\end{table}
+
+\subsection{Geometry and materials}
+The 2D computational domain is a rectangular air box (width $L_{\mathrm{air}}$, height $H_{\mathrm{air}}$) containing a semicircular cap that defines the initial droplet. The bottom edge represents the solid substrate co-located with the $3\times\SI{3}{mm^2}$ gold pad. The final geometry is illustrated in Figure~\ref{geometry}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\columnwidth]{FinalGeometry2.png}
+\caption{Geometry of the droplet contact angle simulation.}
+\label{geometry}
+\end{figure}
+
+
+The dielectric stack (SU-8 2002 and Fluoropel PFC-1601V) is \emph{not} modeled as volumetric domains in this study; instead, its electromechanical effect enters the contact-angle law via $C_{\mathrm{eff}}$.
+
+Materials are assigned as \textit{Water, liquid} to the droplet subdomain and \textit{Air} elsewhere; default temperature-dependent $\rho$ and $\mu$ are used.
+
+\subsection{Physics and boundary conditions}
+\textbf{Flow.} The \texttt{spf} (Laminar Flow) and \texttt{tpf1} (Two-Phase Flow, Level Set) interfaces are coupled. The bottom wall uses no-slip; the lateral and top boundaries use \emph{Open boundary} (normal stress $f_0=0$). Surface tension $\gamma_{LG}$ acts at the interface.
+
+\textbf{Electrowetting via contact angle.} On the bottom wall, a \emph{Wetted
+Wall} condition sets the apparent contact angle as
+\begin{equation}
+\cos\theta(V)=\cos\theta_0 + \frac{C_{\mathrm{eff}}}{2\gamma_{LG}}\,V^2,
+\qquad
+\theta(V)=\arccos\!\big[\mathrm{clip}(\cdot,-1,1)\big],
+\end{equation}
+with optional lower bound $\theta_{\min}$ if needed for numerical robustness.
+For the parameters in Table~\ref{tab:params}, the coefficient
+$C_{\mathrm{eff}}/(2\gamma_{LG})\approx 4.58\times10^{-6}\,\mathrm{V}^{-2}$,
+so $V=\SI{400}{V}$ predicts $\theta\approx\SI{67}{\degree}$ from
+$\theta_0=\SI{110}{\degree}$.
+
+\textbf{Voltage ramp.} An \texttt{Analytic} function \texttt{ramp(t)} is defined as $\mathrm{ramp}(t)=\min(t/T_{\mathrm{rise}},1)$ with $T_{\mathrm{rise}}=\SI{0.05}{s}$, and the applied voltage is $V(t)=V_{\max}\,\mathrm{ramp}(t)$. A parametric sweep runs $V_{\max}=\{0,80,120,200,280,360,400\}\,$V while the transient is solved over $[0,T_{\mathrm{end}}]$.
+
+\subsection{Meshing and solver}
+A physics-controlled mesh (\texttt{Finer}) is used with a local \texttt{Size} node that refines the contact-line vicinity so the level-set thickness $\varepsilon_{LS}$ is resolved by $\ge 2$ elements. The Level Set parameters use $\varepsilon_{LS}\approx \SI{0.05}{mm}$ and $\gamma_{LS}=\SI{1}{m/s}$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\columnwidth]{MeshFinalGeometry.png}
+\caption{Final mesh of the droplet contact angle simulation.}
+\label{mesh}
+\end{figure}
+
+A time-dependent segregated solver with consistent initialization advances the solution; output times are stored at $\mathrm{range}(0,\Delta t,T_{\mathrm{end}})$ (e.g.\ $\Delta t=\SI{0.05}{s}$) for post-processing.
+
+\subsection{Post-processing}
+Solution fields are visualized as surface maps of the volume fraction of Fluid~1 with the liquid–air interface identified by the $\phi=0.5$ isocontour. Time histories of the applied contact angle $\theta(t)=\theta_V(t)$ (from the wetted wall condition) and the wetted footprint are extracted via Derived Values.
+
+For archival and downstream analysis, a consolidated CSV with data $\{t,\;V(t),\;\theta(t),\;V_{\max}\}$, where $V(t)=V_{\max}\,\mathrm{ramp}(t)$ was exported. The exported data are used to generate $\theta$–$V$ and $\theta$–$t$ curves. All plots are produced with fixed axis limits and a fixed color range for the volume fraction ($0\!\to\!1$), consistent units/labels, and uniform styling to enable direct comparison across voltages.
+
+Final-time snapshots for each $V_{\max}$ are exported as high-resolution PNGs; the transient evolution at each $V_{\max}$ is exported as GIF/WEBM animations with consistent framing (manual axes), suppressed titles/logos, and identical frame settings (fps and frame count) to ensure comparability.
+
+\section{Results and Discussion}
+Figure~\ref{COMSOL_Sim} summarized the spatiotemporal evolution of the water–air interface under electrowetting. The three columns reported snapshots at \(t=0\), \(0.25\), and \(0.5~\mathrm{s}\); the rows \((a)\)–\((c)\) corresponded to increasing voltage ramp amplitudes \(V_{\max}\) (e.g., low, medium, and high, up to \(400~\mathrm{V}\)). Each panel displayed the volume fraction of Fluid~1 with the \(\phi=0.5\) isocontour marking the interface. The white circle in the last panel served as a visual overlay of the initial spherical cap.
+\begin{figure*}[hbp!]
+\centering
+\includegraphics[scale=0.5]{COMSOL_Sim.png}
+\caption{Snapshots of the droplet contact angle simulation at $V_{\max}=\{0,200,400\}\,$V. The color map shows the volume fraction of Fluid~1 (water), with the interface at $\phi=0.5$.}
+\label{COMSOL_Sim}
+\end{figure*}
+
+\subsection{Qualitative evolution and morphology}
+At \(t=0\) the droplet reproduced the initialized spherical cap consistent with \(\theta_0=110^{\circ}\) and showed no net drift. After the voltage ramp started, the interface flattened and the contact line advanced, indicating a reduction of the apparent contact angle in accordance with Young–Lippmann [Eq.~\eqref{Young–Lippmann_V2}]. Row~\((a)\) (lowest \(V_{\max}\)) exhibited only minor deformation over \(0.5~\mathrm{s}\). Row~\((b)\) (intermediate \(V_{\max}\)) displayed measurable spreading by \(t=0.25~\mathrm{s}\) and approached a quasi-steady cap by \(t=0.5~\mathrm{s}\). Row~\((c)\) (highest \(V_{\max}\)) showed a pronounced increase in footprint and a clear decrease in apex curvature, consistent with a larger \(\Delta\cos\theta\). No pinch-off, satellite droplets, or numerical tearing of the interface were observed.
+
+\subsection{Kinetics and timescales.}
+For nonzero \(V_{\max}\) the early interval (\(0\!\to\!0.25~\mathrm{s}\)) was dominated by rapid contact-line motion as the electrowetting-induced capillary pressure accelerated the interface. The subsequent interval (\(0.25\!\to\!0.5~\mathrm{s}\)) exhibited slower relaxation toward the new
+equilibrium shape. The two-stage evolution aligned with capillary–viscous spreading: a fast response near the ramp onset followed by viscous braking in the wedge close to the contact line. The observed approach to steady state by \(t=0.5~\mathrm{s}\) at moderate and high \(V_{\max}\) indicated that the chosen ramp duration and simulation window were sufficient to capture the end states.
+
+\subsection{Contact angle and footprint metrics.}
+As summarized in Table~\ref{SimResultsTable}, the imposed apparent angle $\theta(t)=\theta_V(t)$ decreased monotonically during the ramp $V(t)=V_{\max}\,\mathrm{ramp}(t)$ and then stabilized, while the wetted footprint $w(t)$ increased accordingly. The final angles $\theta(T_{\mathrm{end}})$ decreased systematically with $V_{\max}$ in line with Eq.~\eqref{Young–Lippmann_V2}: at $t=\SI{0.5}{\second}$ the contact angle fell from \ang{110} at \SI{0}{\volt} to \ang{99.70} at \SI{200}{\volt} and to \ang{69.36}
+at \SI{400}{\volt}. These values are consistent with the expected Young–Lippmann trend for the SU-8 fluoropolymer stack.
+
+\begin{table}[h!]
+\centering
+\caption{Simulated results from COMSOL model.}
+\label{SimResultsTable}
+\begin{tblr}{
+  width = \linewidth,
+  colspec = {Q[190]Q[46]Q[162]Q[46]Q[215]Q[46]Q[188]},
+  column{odd} = {c},
+  column{4} = {c},
+  column{6} = {c},
+  cell{1}{1} = {r=2}{},
+  cell{1}{3} = {c=5}{0.657\linewidth},
+  hline{1,8} = {-}{0.08em},
+  hline{2} = {3-7}{},
+  hline{3} = {1,3,5,7}{},
+}
+{Voltage~\\(V)} &  & Contact Angle ($\si{\degree}$) &  &  &  & \\
+ &  & t = 0 s &  & t = 0.25 s &  & t = 0.5 s\\
+0 &  & 110.00 &  & 110.00 &  & 110.00\\
+ &  &  &  &  &  & \\
+200 &  & 110.00 &  & 107.37 &  & 99.70\\
+ &  &  &  &  &  & \\
+400 &  & 110.00 &  & 99.70 &  & 69.36
+\end{tblr}
+\end{table}
+
+\subsection{Mass conservation and numerical checks.}
+The integral \(\int_{\Omega}\phi\,\mathrm{d}\Omega\) remained effectively constant over time, indicating that the chosen Level Set thickness \(\varepsilon_{LS}\) and local mesh refinement at the substrate were adequate to control spurious diffusion. The interface retained a thickness of \(\mathcal{O}(\varepsilon_{LS})\) without visible smearing into the bulk away from the contact line. No spurious currents or pressure oscillations were observed in quiescent regions.
+
+\subsection{Limitations and robustness.}
+The model represented electrowetting through the boundary condition \(\theta(V)\) only; explicit electrostatics in the fluid volume, contact-angle hysteresis, and saturation were not included. These omissions were appropriate for studying voltage-controlled spreading on mm-scale droplets, but they would affect absolute predictions at very high fields or on heterogeneous surfaces. Numerical accuracy depended on resolving \(\varepsilon_{LS}\) with at least 2–4 elements; coarser meshes would smear the interface near the contact line and bias \(\theta\) and \(w\). Despite these caveats, the qualitative and semi-quantitative agreement with Young–Lippmann and the internal consistency checks (mass conservation, smooth relaxation) supported the fidelity of the results reported in Fig.~\ref{COMSOL_Sim}.
 
 \section{Conclusion}
+A two-phase, Level Set model was used to quantify electrowetting-driven deformation of a spherical-cap water droplet on a gold/SU-8/fluoropolymer stack. The simulations reproduced the expected voltage-dependent spreading: increasing \(V_{\max}\) decreased the apparent contact angle and increased the wetted footprint, with rapid early-time motion followed by viscous relaxation to a new cap. End-state morphologies were consistent with the Young–Lippmann relation using the series capacitance of the dielectric stack, and internal diagnostics confirmed acceptable mass conservation and interface quality.
+
+The workflow produced analysis-ready tables \(\{t,\,V(t),\,\theta(t),\,V_{\max}\}\) and publication-quality figures. These products are suitable for (i) extracting \(C_{\mathrm{eff}}\) by regressing \(\cos\theta\) against \(V^2\), (ii) comparing with measurements, and (iii) guiding design choices that favor thin, high-\(\varepsilon_r\) dielectrics for low-voltage operation. Future extensions could incorporate hysteresis/saturation models, explicit electrostatics to resolve fringe fields, three-dimensional geometries, and mesh-convergence studies focused on the contact-line region to tighten quantitative accuracy.
+
+\section{Future Work}
+
+\subsection{Experimental validation and parameter identification}
+We will fabricate pads with the same Au/SU-8/fluoropolymer stack and measure $\theta(t)$ under voltage ramps using high-speed goniometry. A regression of $\cos\theta$ versus $V^2$ will identify $C_{\mathrm{eff}}$ and test Eq.~\eqref{Young–Lippmann_V2}; discrepancies will be attributed to hysteresis, saturation, or dielectric leakage. Image-based footprint tracking will provide $w(t)$ for dynamic comparisons.
+
+\subsection{Electrostatics-coupled formulation}
+To move beyond a purely boundary-driven Young–Lippmann model, we will couple \textit{Electrostatics} (\texttt{es}) or \textit{Electric Currents} (\texttt{ec}) to \texttt{tpf1} and compute the Maxwell stress traction $\mathbf{t}_\mathrm{EM}=\mathbf{n}\!\cdot\!(\varepsilon\,\mathbf{E}\mathbf{E} -\tfrac12\varepsilon |\mathbf{E}|^2\mathbf{I})$ at the interface. This allows assessment of fringe-field effects, spatially varying $\varepsilon_r$, thin-film conductance, and frequency response (AC or PWM actuation).
+
+\subsection{Dynamic contact-angle, hysteresis, and saturation models}
+We will replace the static $\theta(V)$ with a dynamic law. A Cox–Voinov/Kistler-type relation, $\theta^3=\theta_{\mathrm{m}}^3+9\,\mathrm{Ca}\,\ln(L/\ell)$ with $\mathrm{Ca}=\mu U_{\mathrm{cl}}/\gamma_{LG}$ and $U_{\mathrm{cl}}$ the contact-line speed, will capture viscous bending; advancing/receding limits $\theta_{\mathrm{A}},\theta_{\mathrm{R}}$ will model hysteresis, and $\Delta\cos\theta_{\max}$ will implement saturation at high fields. In COMSOL this will be effected via a \textit{Wetted Wall} with user-defined $\theta(t)$ and a contact-line velocity probe.
+
+\subsection{Numerical verification and robustness}
+We will perform grid/time-step convergence and $\varepsilon_{LS}$ sensitivity, targeting invariance of $\{\theta(T_{\mathrm{end}}),w(T_{\mathrm{end}})\}$ and mass conservation. A Navier slip condition with calibrated slip length will be tested to reduce near-contact singular shear. Domain-size effects (top/side boundaries) will be quantified.
+
+\subsection{Axisymmetric and 3D geometries}
+An axisymmetric model will provide a closer surrogate for a truly 3D droplet at lower cost; full 3D will then be used for noncircular electrodes and arrays (transport, splitting, merging). Array studies will establish voltage thresholds and timing for digital microfluidic operations.
+
+\subsection{Waveforms, frequency response, and energetics}
+We will simulate DC, AC, and PWM waveforms and map $\theta_{\mathrm{rms}}(V,f)$, power dissipation, and thermal rise (adding \textit{Heat Transfer} when needed). Leakage-induced drift and charge trapping will be modeled via a finite conductivity in the dielectric stack.
+
+\subsection{Reliability of the dielectric stack}
+Aging, breakdown, and pinhole statistics will be incorporated by sampling $t_d,\varepsilon_r$ from measured distributions (Monte Carlo/Latin hypercube) and propagating uncertainty to $\theta$–$V$ performance envelopes.
+
+\subsection{Model-form calibration and optimization}
+Using the exported CSVs $\{t,V(t),\theta(t),V_{\max}\}$ and measurements, we will calibrate uncertain parameters ($\varepsilon_r,t_d,\theta_{\mathrm{A/R}}, \Delta\cos\theta_{\max}$) via least-squares or Bayesian inference. The \textit{Optimization Module} will then minimize actuation voltage subject to constraints on response time, dielectric stress, and footprint.
+
+\subsection{Data and automation}
+We will script parametric sweeps and figure/animation export through LiveLink for MATLAB/Python, maintain a reproducible pipeline (tables, plots, build scripts), and publish a minimal repository bundling the \texttt{.mph} file, CSV outputs, and \LaTeX\ sources used to generate the report.
 
 \section{Acknowledgement}
-The authors gratefully acknowledge the support from
-the Ministry of Higher Education Malaysia for Fundamental
-Research Grant Scheme with Project Code:
-FRGS/1/2022/TK0/USM/02/10.
+The authors gratefully acknowledge the support from the Ministry of Higher Education Malaysia for Fundamental Research Grant Scheme with Project Code: FRGS/1/2022/TK0/USM/02/10.
 
 
 
